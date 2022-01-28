@@ -10,7 +10,17 @@
 
 # And now take a look my young padawan 
 
-echo "One for ${1:-you}, one for me."
+# echo "One for ${1:-you}, one for me."
+ 
+# or # 
+
+main(){
+name=${1}
+printf "One for %s, one for me.\n" "${name:=you}"
+}
+
+main "$@"
+
 
 
 
