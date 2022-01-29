@@ -1,24 +1,28 @@
 #!/usr/bin/env bash
+printout=""
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+if [ $# -eq 0 ] 
+then
+	exit 0
+fi
+
+if (( $1%3 == 0 )) 
+then
+	printout+="Pling"
+fi
+
+if (( $1%5 == 0 ))
+then
+	printout+="Plang"
+fi
+if (( $1%7 == 0 ))
+then
+	printout+="Plong"
+fi
+
+if [ "$printout" ] 
+then
+	echo $printout
+	exit 0
+fi
+echo $1
