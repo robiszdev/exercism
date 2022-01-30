@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
-if (( $# == 0 ))
-then
-	echo "Usage: error_handling.sh <person>"
-	exit 1
-fi
-if (( $# > 1 ))
-then 
-	echo "Usage: error_handling.sh <person>"
-	exit 1
-fi
-echo "Hello, $1"
+set -o errexit
+set -o nounset
 
+main() {
+	case $# in
+		0) printf "%s" "Usage: error_handling.sh <person>"; return 1 ;;
+		1) printf "%s" "Hello, $1"; return 0 ;;
+		*) printf "%s" "Usage: error_handling.sh <person>"; return 1 ;;
+	esac
+}
 
+main "$@"
