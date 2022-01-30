@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-(( $1 % 3 )) || result+=Pling
-(( $1 % 5 )) || result+=Plang
-(( $1 % 7 )) || result+=Plong
+declare -a sounds=([3]='Pling' [5]='Plang' [7]='Plong')
+output=''
 
-echo ${result:-$1}
+for n in ${!sounds[@]}; do
+	if (( $1%n == 0 )); then
+		output+=${sounds[$n]}
+	fi
+done
+echo ${output:-$1}
 
-### Info from me ###
-# This script does't work when you 
-# don't pass any arguments.
-# Mine is works.
-### 		 ###
-
+### Nice with array but 
+# doesn't work If you don't pass
+# an argument
+###
